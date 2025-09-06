@@ -1,0 +1,22 @@
+meta {
+  name: Create-Variables
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3000/create-variable
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+  "key":"favColour",
+    "value":"Black"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

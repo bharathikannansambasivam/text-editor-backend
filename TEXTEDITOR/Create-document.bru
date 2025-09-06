@@ -1,0 +1,19 @@
+meta {
+  name: Create-document
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000/create-document
+  body: json
+  auth: inherit
+}
+
+body:json {
+  { "title":"teste", "text":"test 1" }
+}
+
+settings {
+  encodeUrl: true
+}

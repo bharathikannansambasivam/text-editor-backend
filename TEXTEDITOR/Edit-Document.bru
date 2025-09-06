@@ -1,0 +1,19 @@
+meta {
+  name: Edit-Document
+  type: http
+  seq: 1
+}
+
+put {
+  url: http://localhost:3000/edit-document/68a2e33833ea1e1dddac609c
+  body: json
+  auth: inherit
+}
+
+body:json {
+  { "title":"V3", "text":"Version 3" }
+}
+
+settings {
+  encodeUrl: true
+}

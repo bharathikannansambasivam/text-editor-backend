@@ -1,0 +1,22 @@
+meta {
+  name: Edit-Variables
+  type: http
+  seq: 2
+}
+
+put {
+  url: http://localhost:3000/edit-variable/68ba95c443c9c71bf1cb945f
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "key": "favColour",
+      "value": "red"
+  }
+}
+
+settings {
+  encodeUrl: true
+}
