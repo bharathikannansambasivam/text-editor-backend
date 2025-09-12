@@ -71,3 +71,19 @@ exports.deleteDocument = async (req, res) => {
     return res.json({ message: error.message });
   }
 };
+
+exports.searchTitle = async (req, res) => {
+  const { q } = req.query;
+
+  try {
+    const docs = await File.find({
+      title: {
+        $regex: q,
+        $options: "i",
+      },
+    });
+    res.json(docs);
+  } catch (error) {
+    return res.json({ message: error.message });
+  }
+};
