@@ -16,10 +16,10 @@ exports.loginUser = async (req, res) => {
     const { email, password } = req.body;
     const user = await userschema.findOne({ email });
     if (!user) {
-      return res.json({ message: "Invalid Credentials" });
+      return res.json({ message: "Email not found" });
     }
     if (password !== user.password) {
-      return res.json({ message: "Invalid Credentials" });
+      return res.json({ message: "Wrong password" });
     }
     return res.json({
       message: "Login successful",
