@@ -2,8 +2,8 @@ const Variable = require("../models/variableSchema");
 
 exports.createVariable = async (req, res) => {
   try {
-    const { key, value } = req.body;
-    const newVariable = await Variable.create({ key, value });
+    const { key, value, userId } = req.body;
+    const newVariable = await Variable.create({ userId, key, value });
     return res.send({ newVariable });
   } catch (e) {
     return res.send(e.message);
@@ -12,7 +12,9 @@ exports.createVariable = async (req, res) => {
 
 exports.getAllVariable = async (req, res) => {
   try {
-    const allVariables = await Variable.find();
+    const { userId } = req.query;
+
+    const allVariables = await Variable.find({ userId });
     return res.send(allVariables);
   } catch (e) {
     return res.send(e.message);

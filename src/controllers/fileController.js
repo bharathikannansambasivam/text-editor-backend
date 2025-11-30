@@ -3,8 +3,9 @@ const File = require("../models/fileSchema");
 
 exports.createDocument = async (req, res) => {
   try {
-    const { title, text } = req.body;
+    const { title, text, userId } = req.body;
     const newFile = {
+      userId,
       title,
       text,
     };
@@ -26,7 +27,8 @@ exports.getDocument = async (req, res) => {
 
 exports.getDocuments = async (req, res) => {
   try {
-    const response = await File.find();
+    const { userId } = req.query;
+    const response = await File.find({ userId });
     return res.json(response);
   } catch (error) {
     return res.json({ message: error.message });
@@ -73,10 +75,11 @@ exports.deleteDocument = async (req, res) => {
 };
 
 exports.searchTitle = async (req, res) => {
-  const { q } = req.query;
+  const { q, userId } = req.query;
 
   try {
     const docs = await File.find({
+      userId,
       title: {
         $regex: q,
         $options: "i",

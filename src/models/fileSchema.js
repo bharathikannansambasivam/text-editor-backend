@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 
 const fileSchema = new mongoose.Schema(
   {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "loginDetail",
+      required: true,
+    },
     title: {
       type: String,
     },
