@@ -2,7 +2,7 @@ const express = require("express");
 const fileRouter = require("./src/routes/fileRoutes.js");
 const variableRouter = require("./src/routes/variableRoutes.js");
 const userRouter = require("./src/routes/userRoutes.js");
-
+const aiRouter = require("./src/routes/aiRoutes.js");
 require("dotenv").config();
 
 const MONGO_URL = process.env.MONGO_URL;
@@ -19,6 +19,7 @@ app.use(express.urlencoded({ limit: "10mb", extended: true }));
 app.use(fileRouter);
 app.use(variableRouter);
 app.use(userRouter);
+app.use(aiRouter);
 app.get("/", (req, res) => {
   return res.send("Hello");
 });
