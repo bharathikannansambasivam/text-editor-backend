@@ -7,9 +7,14 @@ meta {
 get {
   url: http://localhost:3000/get-variables
   body: none
-  auth: inherit
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTVhMDcwNGRmYWI2ZTYzMzM3NzJlMGUiLCJpYXQiOjE3Njc1MDc3MjcsImV4cCI6MTc2NzU5NDEyN30.JOAFYFRRCwywsstx9ebA7lDSuswYGd5DFhh9NGO2vTg
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

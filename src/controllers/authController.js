@@ -13,8 +13,9 @@ exports.createUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = { name, password: hashedPassword, email };
     const newUser = await userschema.create(user);
-
-    return res.send(newUser);
+    return res.status(201).json({
+      message: "User created successfully",
+    });
   } catch (error) {
     return res.json({ message: error.message });
   }
@@ -26,14 +27,13 @@ exports.loginUser = async (req, res) => {
     const user = await userschema.findOne({ email });
 
     if (!user) {
-      return res.json({ message: "Email not found" });
+      return res.status(404).json({ message: "Email not found" });
     }
-    console.log(req.body);
 
     const comparePassword = await bcrypt.compare(password, user.password);
-
-    if (!comparePassword)
-      return res.status(400).json({ message: "Invalid credentials" });
+    if (!comparePassword) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
 
     const token = jwt.sign({ userId: user._id }, process.env.JWT_ACCESS_TOKEN, {
       expiresIn: "1d",

@@ -5,9 +5,13 @@ meta {
 }
 
 put {
-  url: http://localhost:3000/edit-document/68a2e33833ea1e1dddac609c
+  url: http://localhost:3000/edit-document/695a0789dfab6e6333772e11
   body: json
-  auth: inherit
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTVhMDcwNGRmYWI2ZTYzMzM3NzJlMGUiLCJpYXQiOjE3Njc1MDc3MjcsImV4cCI6MTc2NzU5NDEyN30.JOAFYFRRCwywsstx9ebA7lDSuswYGd5DFhh9NGO2vTg
 }
 
 body:json {
@@ -16,4 +20,5 @@ body:json {
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

@@ -7,7 +7,11 @@ meta {
 put {
   url: http://localhost:3000/edit-variable/68ba95c443c9c71bf1cb945f
   body: json
-  auth: inherit
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTVhMDcwNGRmYWI2ZTYzMzM3NzJlMGUiLCJpYXQiOjE3Njc1MDc3MjcsImV4cCI6MTc2NzU5NDEyN30.JOAFYFRRCwywsstx9ebA7lDSuswYGd5DFhh9NGO2vTg
 }
 
 body:json {
@@ -19,4 +23,5 @@ body:json {
 
 settings {
   encodeUrl: true
+  timeout: 0
 }
